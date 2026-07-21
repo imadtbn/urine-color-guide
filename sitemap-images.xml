@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://urine-color-guide.example.com/</loc>
+    <image:image>
+      <image:loc>https://urine-color-guide.example.com/assets/images/og-cover.jpg</image:loc>
+      <image:title>دليل ألوان البول</image:title>
+    </image:image>
+  </url>
+  <!--
+    أضف هنا وسم <image:image> لكل صورة حقيقية للون بول يتم رفعها إلى assets/images/,
+    مع image:title بوصف عربي دقيق لكل صورة.
+  -->
+</urlset>

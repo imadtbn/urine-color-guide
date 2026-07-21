@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/js/
+Disallow: /404.html
+
+Sitemap: https://urine-color-guide.example.com/sitemap.xml
+Sitemap: https://urine-color-guide.example.com/sitemap-images.xml
