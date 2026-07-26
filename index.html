@@ -65,69 +65,234 @@
 
   <!-- Structured Data: Website -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "دليل ألوان البول",
-    "url": "https://imadtbn.github.io/urine-color-guide/",
-    "inLanguage": "ar",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://imadtbn.github.io/urine-color-guide/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalWebPage",
+      "@id": "https://imadtbn.github.io/urine-color-guide/#webpage",
+      "url": "https://imadtbn.github.io/urine-color-guide/",
+      "name": "دليل ألوان البول - المرجع العربي الشامل",
+      "description": "دليل ألوان البول: تعرف على دلالات 16 لوناً، أسباب تغير اللون، ومتى تستوجب مراجعة الطبيب. مرجع طبي معتمد على مصادر عالمية.",
+      "inLanguage": "ar",
+      "isPartOf": {
+        "@id": "https://imadtbn.github.io/urine-color-guide/#website"
+      },
+      "about": {
+        "@type": "MedicalCondition",
+        "name": "تغيرات لون البول",
+        "alternateName": "ألوان البول ودلالاتها الصحية"
+      },
+      "medicalAudience": {
+        "@type": "MedicalAudience",
+        "audienceType": "patient"
+      },
+      "lastReviewed": "2026-07-26",
+      "dateModified": "2026-07-26",
+      "datePublished": "2026-07-01",
+      "author": {
+        "@type": "Organization",
+        "name": "فريق دليل ألوان البول"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "دليل ألوان البول"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "الشفاف",
+            "description": "يدل على ترطيب زائد، لكن قد يشير إلى مشكلة في الكلى إذا استمر دون سبب."
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "الأصفر الفاتح",
+            "description": "اللون الطبيعي الصحي، يدل على ترطيب جيد."
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "الأصفر الداكن",
+            "description": "قد يشير إلى جفاف خفيف، ينصح بشرب الماء."
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "العنبر / العسلي",
+            "description": "جفاف متوسط إلى شديد، يحتاج إلى تعويض سوائل."
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "البرتقالي",
+            "description": "قد يكون بسبب أدوية، فيتامينات، أو مشكلة في الكبد أو القنوات الصفراوية."
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "الوردي / الأحمر",
+            "description": "قد يكون بسبب أطعمة (شمندر، توت) أو دم في البول (التهابات، حصى، أورام)."
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "البني الغامق",
+            "description": "قد يدل على جفاف شديد، أمراض كبد، أو انحلال عضلي."
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "الأسود",
+            "description": "حالة طارئة، قد تشير إلى مرض البيلة الداكنة أو تسمم."
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "name": "الأزرق أو الأخضر",
+            "description": "نادر، غالباً بسبب أدوية أو أصباغ غذائية."
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "name": "الأبيض / العكر",
+            "description": "قد يدل على التهابات بولية، أو وجود بلورات أو دهون."
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://imadtbn.github.io/urine-color-guide/#website",
+      "url": "https://imadtbn.github.io/urine-color-guide/",
+      "name": "دليل ألوان البول",
+      "description": "مرجع طبي عربي يشرح دلالات ألوان البول وأسبابها ومتى تستوجب زيارة الطبيب.",
+      "inLanguage": "ar",
+      "publisher": {
+        "@type": "Organization",
+        "name": "دليل ألوان البول"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://imadtbn.github.io/urine-color-guide/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://imadtbn.github.io/urine-color-guide/#organization",
+      "name": "دليل ألوان البول",
+      "url": "https://imadtbn.github.io/urine-color-guide/",
+      "logo": "https://imadtbn.github.io/urine-color-guide/assets/icons/icon-512.png",
+      "description": "فريق متخصص في إعداد محتوى طبي تثقيفي موثوق باللغة العربية.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+213555000000",
+        "contactType": "customer service",
+        "availableLanguage": "Arabic"
+      },
+      "sameAs": [
+        "https://www.facebook.com/yourpage",
+        "https://twitter.com/yourhandle"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://imadtbn.github.io/urine-color-guide/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://imadtbn.github.io/urine-color-guide/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://imadtbn.github.io/urine-color-guide/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هو لون البول الطبيعي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يتراوح من الشفاف إلى الأصفر الفاتح، ويعود ذلك إلى صبغة اليوروكروم التي ينتجها الجسم."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "متى يكون تغير لون البول علامة خطر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "عندما يكون أحمر دموي، بني غامق، أو أسود دون سبب غذائي، ويصاحبه ألم أو حمى أو اصفرار الجلد."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل لون البول البرتقالي خطير؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ليس بالضرورة، فقد يكون بسبب أدوية أو فيتامينات، لكن إذا استمر دون سبب فقد يشير إلى مشكلة في الكبد أو القنوات الصفراوية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ماذا يعني البول الأبيض العكر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "قد يدل على وجود التهاب في المسالك البولية، أو بلورات، أو دهون، ويستدعي فحصاً طبياً."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أعرف أنني أشرب كمية كافية من الماء؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "إذا كان لون البول أصفر فاتحاً أو شفافاً، فأنت بترطيب جيد. أما إذا كان داكناً فعليك زيادة شرب الماء."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://imadtbn.github.io/urine-color-guide/#hydration-calculator",
+      "name": "كيف تحسب احتياجك اليومي من الماء؟",
+      "description": "أداة تقديرية لحساب كمية الماء التي تحتاجها يومياً بناءً على وزنك ونشاطك ومناخك.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "أدخل وزنك بالكيلوغرام",
+          "text": "استخدم شريط الإدخال أو اكتب رقم وزنك."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "اختر مستوى النشاط البدني",
+          "text": "حدد ما إذا كان نشاطك قليلاً، متوسطاً، أم مرتفعاً."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "اختر المناخ",
+          "text": "معتدل أم حار، لأن الحرارة تزيد من احتياج الماء."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "اقرأ النتيجة",
+          "text": "ستظهر لك الكمية التقريبية الموصى بها يومياً."
+        }
+      ]
     }
-  }
+  ]
+}
   </script>
 
-  <!-- Structured Data: MedicalWebPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "name": "دليل ألوان البول",
-    "url": "https://imadtbn.github.io/urine-color-guide/",
-    "medicalAudience": {"@type": "MedicalAudience", "audienceType": "Patient"},
-    "about": {"@type": "MedicalCondition", "name": "تغيرات لون البول"},
-    "lastReviewed": "2026-07-01",
-    "reviewedBy": {"@type": "Organization", "name": "فريق دليل ألوان البول"},
-    "publisher": {"@type": "Organization", "name": "دليل ألوان البول"}
-  }
-  </script>
-
-  <!-- Structured Data: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "دليل ألوان البول",
-    "url": "https://imadtbn.github.io/urine-color-guide/",
-    "logo": "https://imadtbn.github.io/urine-color-guide/assets/icons/icon-512.png",
-    "sameAs": []
-  }
-  </script>
-
-  <!-- Structured Data: Breadcrumb -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "الرئيسية", "item": "https://imadtbn.github.io/urine-color-guide/"}
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type": "Question", "name": "ما هو لون البول الطبيعي؟", "acceptedAnswer": {"@type": "Answer", "text": "يتراوح لون البول الطبيعي من الشفاف إلى الأصفر الفاتح، ويعود اللون الأصفر إلى صبغة اليوروكروم التي يفرزها الجسم."}},
-      {"@type": "Question", "name": "متى يكون تغيّر لون البول علامة خطر؟", "acceptedAnswer": {"@type": "Answer", "text": "عندما يكون اللون أحمر أو بنياً غامقاً أو أسود دون سبب غذائي واضح، أو يصاحبه ألم أو حمى أو اصفرار الجلد."}}
-    ]
-  }
-  </script>
 </head>
 
 <body>
