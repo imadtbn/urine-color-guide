@@ -936,9 +936,23 @@ table.compare tbody tr:hover {
 /* ============ Ad slots ============ */
 .ad-slot {
   max-width: var(--container);
-  margin: 30px auto;
   padding: 0 20px;
 }
+
+.ad-container{
+    max-width:1180px;
+    margin:48px auto;
+    padding:0 20px;
+    text-align:center;
+    overflow:hidden;
+    clear:both;
+}
+
+.ad-container ins{
+    display:block;
+    min-height:100px;
+}
+
 .ad-slot .ad-box {
   min-height: 90px;
   border: 1px dashed var(--border);
