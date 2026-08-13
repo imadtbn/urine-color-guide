@@ -2,11 +2,13 @@
  * service-worker.js — تخزين مؤقت بسيط للملفات الأساسية لتحسين الأداء
  * وإتاحة تصفح محدود دون اتصال (Offline-first shell).
  */
-const CACHE_NAME = "urine-guide-v1";
+const CACHE_NAME = "urine-guide-v2";
 const CORE_ASSETS = [
   "/",
   "/index.html",
+  "/articles.html",
   "/assets/css/style.css",
+  "/assets/css/article.css",
   "/assets/css/responsive.css",
   "/assets/js/data.js",
   "/assets/js/faq-data.js",

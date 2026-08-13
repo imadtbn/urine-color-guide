@@ -44,15 +44,25 @@
   /* ---------- قائمة الجوال ---------- */
   const navToggle = document.getElementById("navToggle");
   const mainNav = document.getElementById("mainNav");
-  navToggle?.addEventListener("click", () => {
-    const open = mainNav.classList.toggle("mobile-open");
+  function setNavState(open) {
+    if (!mainNav || !navToggle) return;
+    mainNav.classList.toggle("mobile-open", open);
+    document.body.classList.toggle("nav-open", open);
     navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "إغلاق القائمة" : "فتح القائمة");
+    navToggle.textContent = open ? "×" : "☰";
+  }
+  navToggle?.addEventListener("click", () => {
+    setNavState(!mainNav.classList.contains("mobile-open"));
   });
   mainNav?.addEventListener("click", (e) => {
-    if (e.target.tagName === "A") {
-      mainNav.classList.remove("mobile-open");
-      navToggle?.setAttribute("aria-expanded", "false");
-    }
+    if (e.target.closest("a")) setNavState(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setNavState(false);
+  });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) setNavState(false);
   });
 
   /* ---------- رسم بطاقات الألوان ---------- */
