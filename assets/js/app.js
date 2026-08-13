@@ -44,12 +44,16 @@
   /* ---------- قائمة الجوال ---------- */
   const navToggle = document.getElementById("navToggle");
   const mainNav = document.getElementById("mainNav");
+  const navOverlay = document.getElementById("navOverlay");
   function setNavState(open) {
     if (!mainNav || !navToggle) return;
     mainNav.classList.toggle("mobile-open", open);
+    navOverlay?.classList.toggle("active", open);
+    navOverlay?.setAttribute("aria-hidden", String(!open));
     document.body.classList.toggle("nav-open", open);
     navToggle.setAttribute("aria-expanded", String(open));
     navToggle.setAttribute("aria-label", open ? "إغلاق القائمة" : "فتح القائمة");
+    navToggle.setAttribute("title", open ? "إغلاق القائمة" : "القائمة");
     navToggle.textContent = open ? "×" : "☰";
   }
   navToggle?.addEventListener("click", () => {
@@ -58,6 +62,7 @@
   mainNav?.addEventListener("click", (e) => {
     if (e.target.closest("a")) setNavState(false);
   });
+  navOverlay?.addEventListener("click", () => setNavState(false));
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setNavState(false);
   });
