@@ -240,3 +240,51 @@ for generated in [ROOT / "articles.html", *sorted(OUT.glob("*.html"))]:
         if 'class="article-ad-bottom"' not in html:
             html = html.replace("</div><div class=\"article-disclaimer\">", f"</div>{AD_BOTTOM}<div class=\"article-disclaimer\">", 1)
     generated.write_text(html, encoding="utf-8")
+
+
+# Keep FAQ JSON-LD synchronized with the visible questions.
+import json
+import re
+from bs4 import BeautifulSoup
+
+
+def write_faq_schema(path, items):
+    soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": question,
+                "acceptedAnswer": {"@type": "Answer", "text": answer},
+            }
+            for question, answer in items
+        ],
+    }
+    script = soup.find("script", id="faq-schema")
+    if script is None:
+        script = soup.new_tag("script", id="faq-schema", type="application/ld+json")
+        soup.head.append(script)
+    script.string = json.dumps(schema, ensure_ascii=False, indent=2)
+    path.write_text(str(soup), encoding="utf-8")
+
+
+faq_source = (ROOT / "assets/js/faq-data.js").read_text(encoding="utf-8")
+index_faq = re.findall(r'q:\s*"([^"\n]+)"\s*,\s*a:\s*"([^"\n]+)"', faq_source)
+write_faq_schema(ROOT / "index.html", index_faq)
+
+faq_pages = [ROOT / "articles/uti-symptoms-urine-color.html", *sorted(OUT.glob("*.html"))]
+for faq_page in faq_pages:
+    soup = BeautifulSoup(faq_page.read_text(encoding="utf-8"), "html.parser")
+    items = []
+    for details in soup.select(".faq-list details"):
+        question = details.find("summary")
+        answer = details.find("p")
+        if question and answer:
+            items.append((question.get_text(" ", strip=True), answer.get_text(" ", strip=True)))
+    if not items and faq_page.name == "uti-symptoms-urine-color.html":
+        source = faq_page.read_text(encoding="utf-8")
+        items = re.findall(r'\{\s*q:\s*"([^"]+)"\s*,\s*a:\s*"([^"]+)"\s*\}', source)
+    if items:
+        write_faq_schema(faq_page, items)
