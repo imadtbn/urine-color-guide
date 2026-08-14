@@ -1124,3 +1124,175 @@ table.compare tbody tr:hover {
 .back-to-top:hover {
   transform: translateY(-3px);
 }
+
+
+/* ============ Enhanced hydration tool ============ */
+.hydration-tool {
+  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 34px;
+  align-items: stretch;
+}
+.hydration-input-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tool-label {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+.hydration-input-panel h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  color: var(--primary-dark);
+}
+.tool-intro {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin: 0 0 22px;
+}
+.hydration-field {
+  margin-bottom: 16px;
+}
+.hydration-field label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.hydration-field label output {
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+.field-help {
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  margin: 6px 0 0;
+}
+.hydration-reset {
+  border: 0;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 0;
+  text-align: right;
+}
+.hydration-reset:hover,
+.hydration-reset:focus-visible {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+.hydration-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.result-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+.result-badge {
+  border-radius: 999px;
+  background: rgba(76, 175, 80, 0.14);
+  color: #2e7d32;
+  font-size: 0.72rem;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+.result-badge.is-caution {
+  background: rgba(245, 158, 11, 0.16);
+  color: #9a5b00;
+}
+.hydration-result.is-caution {
+  background: rgba(245, 158, 11, 0.08);
+}
+.hydration-units {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  margin: 5px 0 0;
+}
+.hydration-breakdown {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+.hydration-breakdown div {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 8px;
+  text-align: center;
+}
+.hydration-breakdown strong,
+.hydration-breakdown span {
+  display: block;
+}
+.hydration-breakdown strong {
+  color: var(--primary-dark);
+  font-size: 1.05rem;
+}
+.hydration-breakdown span {
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  margin-top: 4px;
+}
+.hydration-safety-note {
+  max-width: 880px;
+  margin: 16px auto 0;
+  border-right: 4px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.8;
+  padding: 12px 16px;
+}
+.hydration-safety-note strong {
+  color: var(--ink);
+}
+@media (max-width: 900px) {
+  .hydration-tool {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+}
+@media (max-width: 640px) {
+  .result-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .hydration-breakdown {
+    gap: 8px;
+  }
+  .hydration-safety-note {
+    font-size: 0.78rem;
+    padding: 11px 13px;
+  }
+}
+
+.hydration-field input[aria-invalid="true"] {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.12);
+}
+.hydration-result.is-invalid {
+  border: 1px solid rgba(211, 47, 47, 0.28);
+  background: rgba(211, 47, 47, 0.06);
+}
+.hydration-result.is-invalid .amount {
+  color: var(--danger);
+}

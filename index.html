@@ -563,35 +563,50 @@
           <h2>حاسبة الترطيب اليومي</h2>
           <p>تقدير تثقيفي تقريبي لاحتياجك اليومي من الماء بناءً على وزنك ونشاطك ومناخك.</p>
         </div>
-        <div class="hydration-card">
-          <form class="hydration-form" id="hydrationForm">
-            <label for="weightInput">الوزن (كجم)</label>
-            <input type="number" id="weightInput" min="30" max="200" value="70" />
-
-            <label for="activityInput">مستوى النشاط البدني اليومي</label>
-            <select id="activityInput">
-              <option value="0">قليل (عمل مكتبي)</option>
-              <option value="1">متوسط (رياضة 30 دقيقة)</option>
-              <option value="2">مرتفع (تمارين مكثفة)</option>
-            </select>
-
-            <label for="climateInput">المناخ</label>
-            <select id="climateInput">
-              <option value="0">معتدل</option>
-              <option value="1">حار</option>
-            </select>
-          </form>
-          <div class="hydration-result">
-            <span>احتياجك التقريبي اليومي</span>
+        <div class="hydration-card hydration-tool" id="hydrationTool">
+          <div class="hydration-input-panel">
+            <span class="tool-label">حاسبة تقديرية</span>
+            <h3>أدخل بيانات يومك</h3>
+            <p class="tool-intro">غيّر القيم لترى كيف يتغير التقدير فوراً. لا تُرسل هذه البيانات إلى أي خادم.</p>
+            <form class="hydration-form" id="hydrationForm" novalidate>
+              <div class="hydration-field">
+                <label for="weightInput"><span>الوزن</span><output id="weightValue">70 كجم</output></label>
+                <input type="number" id="weightInput" min="30" max="200" value="70" inputmode="decimal" aria-describedby="weightHelp" required />
+                <p class="field-help" id="weightHelp">أدخل قيمة بين 30 و200 كجم.</p>
+              </div>
+              <div class="hydration-field">
+                <label for="activityInput">مستوى النشاط البدني اليومي</label>
+                <select id="activityInput">
+                  <option value="0">قليل — عمل مكتبي</option>
+                  <option value="1">متوسط — حركة أو رياضة خفيفة</option>
+                  <option value="2">مرتفع — تمارين أو تعرّق واضح</option>
+                </select>
+              </div>
+              <div class="hydration-field">
+                <label for="climateInput">المناخ المحيط</label>
+                <select id="climateInput">
+                  <option value="0">معتدل</option>
+                  <option value="1">حار أو جاف</option>
+                </select>
+              </div>
+              <button class="hydration-reset" type="button" id="hydrationReset">إعادة القيم الافتراضية</button>
+            </form>
+          </div>
+          <div class="hydration-result" id="hydrationResult" role="status" aria-live="polite">
+            <div class="result-heading"><span>التقدير اليومي التقريبي</span><span class="result-badge" id="hydrationBadge">تقدير عام</span></div>
             <strong class="amount" id="hydrationAmount">2.3 لتر</strong>
-            <div class="hydration-meter">
+            <p class="hydration-units"><span id="hydrationMl">2300</span> مل تقريباً · <span id="hydrationCups">9</span> أكواب بحجم 250 مل</p>
+            <div class="hydration-meter" role="progressbar" aria-label="مؤشر كمية الماء التقديرية" aria-valuemin="0" aria-valuemax="4000" aria-valuenow="2300">
               <div class="hydration-meter-fill" id="hydrationMeterFill"></div>
             </div>
-            <p class="hydration-note" id="hydrationVial">
-              تقدير تثقيفي عام وليس توصية طبية شخصية؛ قد تختلف الاحتياجات الفردية حسب الحالة الصحية.
-            </p>
+            <div class="hydration-breakdown" aria-label="اقتراح توزيع الكمية">
+              <div><strong id="hydrationServing">290 مل</strong><span>كل 2–3 ساعات تقريباً</span></div>
+              <div><strong id="hydrationGlasses">3–4</strong><span>أكواب في كل فترة</span></div>
+            </div>
+            <p class="hydration-note" id="hydrationVial">وزّع الكمية على اليوم، وتذكّر أن هذا تقدير تثقيفي عام وليس توصية طبية شخصية.</p>
           </div>
         </div>
+        <div class="hydration-safety-note" role="note"><strong>تنبيه مهم:</strong> إذا نصحك الطبيب بتقييد السوائل، أو لديك مرض في القلب أو الكلى أو الكبد، فلا تستخدم هذا التقدير لتغيير تعليماتك الطبية.</div>
       </div>
     </section>
 

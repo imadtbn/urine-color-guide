@@ -267,32 +267,85 @@
   /* ---------- حاسبة الترطيب ---------- */
   const hydrationForm = document.getElementById("hydrationForm");
   const weightInput = document.getElementById("weightInput");
+  const weightValue = document.getElementById("weightValue");
   const activityInput = document.getElementById("activityInput");
   const climateInput = document.getElementById("climateInput");
+  const hydrationReset = document.getElementById("hydrationReset");
   const amountOut = document.getElementById("hydrationAmount");
+  const hydrationMl = document.getElementById("hydrationMl");
+  const hydrationCups = document.getElementById("hydrationCups");
+  const hydrationServing = document.getElementById("hydrationServing");
+  const hydrationGlasses = document.getElementById("hydrationGlasses");
+  const hydrationBadge = document.getElementById("hydrationBadge");
   const meterFill = document.getElementById("hydrationMeterFill");
+  const hydrationMeter = document.querySelector(".hydration-meter[role=progressbar]");
   const meterVial = document.getElementById("hydrationVial");
+  const hydrationResult = document.getElementById("hydrationResult");
 
   function calcHydration() {
     if (!weightInput) return;
-    const weight = Number(weightInput.value) || 60;
-    const activity = Number(activityInput.value) || 0;
-    const climate = Number(climateInput.value) || 0;
+    const rawWeight = Number(weightInput.value);
+    const validWeight = Number.isFinite(rawWeight) && rawWeight >= 30 && rawWeight <= 200;
+    if (!validWeight) {
+      weightInput.setAttribute("aria-invalid", "true");
+      weightValue && (weightValue.textContent = "30–200 كجم");
+      hydrationResult?.classList.add("is-invalid");
+      hydrationBadge && (hydrationBadge.textContent = "أكمل البيانات");
+      amountOut && (amountOut.textContent = "—");
+      hydrationMl && (hydrationMl.textContent = "—");
+      hydrationCups && (hydrationCups.textContent = "—");
+      hydrationServing && (hydrationServing.textContent = "—");
+      hydrationGlasses && (hydrationGlasses.textContent = "—");
+      meterFill && (meterFill.style.width = "0%");
+      meterVial && (meterVial.textContent = "أدخل وزناً بين 30 و200 كجم لعرض تقدير تثقيفي.");
+      return;
+    }
+    weightInput.removeAttribute("aria-invalid");
+    hydrationResult?.classList.remove("is-invalid");
+    const weight = rawWeight;
+    const activity = Number(activityInput?.value) || 0;
+    const climate = Number(climateInput?.value) || 0;
 
-    // معادلة تقديرية تثقيفية (ليست وصفة طبية): 30-35 مل لكل كجم + إضافات نشاط/مناخ
+    // معادلة تقديرية تثقيفية داخل الموقع: 33 مل لكل كجم + إضافات النشاط والمناخ.
     let ml = weight * 33 + activity * 350 + climate * 300;
     ml = Math.round(ml / 50) * 50;
     const liters = (ml / 1000).toFixed(1);
-
-    if (amountOut) amountOut.textContent = `${liters} لتر`;
+    const cups = Math.round(ml / 250);
+    const serving = Math.round((ml / 8) / 10) * 10;
+    const glasses = Math.max(1, Math.round((ml / 8) / 250));
     const pct = Math.min(100, Math.max(15, (ml / 4000) * 100));
+
+    if (weightValue) weightValue.textContent = `${weight} كجم`;
+    if (amountOut) amountOut.textContent = `${liters} لتر`;
+    if (hydrationMl) hydrationMl.textContent = String(ml);
+    if (hydrationCups) hydrationCups.textContent = String(cups);
+    if (hydrationServing) hydrationServing.textContent = `${serving} مل`;
+    if (hydrationGlasses) hydrationGlasses.textContent = `${Math.max(1, glasses - 1)}–${glasses + 1}`;
     if (meterFill) meterFill.style.width = `${pct}%`;
-    if (meterVial) meterVial.style.background = "linear-gradient(180deg, #f5efa8, #d8b02a)";
+    hydrationMeter?.setAttribute("aria-valuenow", String(ml));
+
+    const isHighEstimate = ml > 3500;
+    if (hydrationBadge) {
+      hydrationBadge.textContent = isHighEstimate ? "تقدير مرتفع نسبياً" : "تقدير عام";
+      hydrationBadge.classList.toggle("is-caution", isHighEstimate);
+    }
+    if (hydrationResult) hydrationResult.classList.toggle("is-caution", isHighEstimate);
+    if (meterVial) meterVial.textContent = isHighEstimate
+      ? "ارتفع التقدير بسبب الوزن أو النشاط أو الحرارة؛ وزّع السوائل ولا تتجاوز تعليمات طبيبك."
+      : "وزّع الكمية على اليوم، وتذكّر أن هذا تقدير تثقيفي عام وليس توصية طبية شخصية.";
   }
+
   ["input", "change"].forEach((evt) => {
     weightInput?.addEventListener(evt, calcHydration);
     activityInput?.addEventListener(evt, calcHydration);
     climateInput?.addEventListener(evt, calcHydration);
+  });
+  hydrationForm?.addEventListener("submit", (event) => event.preventDefault());
+  hydrationReset?.addEventListener("click", () => {
+    if (weightInput) weightInput.value = "70";
+    if (activityInput) activityInput.value = "0";
+    if (climateInput) climateInput.value = "0";
+    calcHydration();
   });
   calcHydration();
 
