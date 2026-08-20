@@ -939,18 +939,81 @@ table.compare tbody tr:hover {
   padding: 0 20px;
 }
 
-.ad-container{
-    max-width:1180px;
-    margin:48px auto;
-    padding:0 20px;
-    text-align:center;
-    overflow:hidden;
-    clear:both;
+/*
+ * الإعلان جزء من تدفق المحتوى، وليس طبقة عائمة فوقه. هذا يحافظ على وضوح
+ * القراءة ويمنح AdSense مساحة محجوزة تقلل قفزات التخطيط عند اكتمال التحميل.
+ */
+.ad-container {
+  --ad-space: clamp(28px, 4vw, 48px);
+  width: 100%;
+  max-width: var(--container);
+  margin: var(--ad-space) auto;
+  padding-inline: 20px;
+  clear: both;
+  overflow: hidden;
+  text-align: center;
+  contain: layout paint;
 }
 
-.ad-container ins{
-    display:block;
-    min-height:100px;
+.ad-container > .adsbygoogle {
+  display: block;
+  width: 100%;
+  min-height: 92px;
+  margin-inline: auto;
+  border-radius: var(--radius-sm);
+  transition: opacity 180ms ease;
+}
+
+.ad-container--feed {
+  --ad-space: clamp(26px, 3.6vw, 42px);
+}
+
+.ad-container--display {
+  --ad-space: clamp(22px, 3vw, 36px);
+}
+
+.ad-container--related,
+.ad-container--footer-recommendations {
+  --ad-space: clamp(20px, 3vw, 32px);
+}
+
+.ad-container--after-intro {
+  margin-top: 18px;
+}
+
+.ad-container--article-inline {
+  max-width: 920px;
+  margin-block: clamp(28px, 4vw, 44px);
+}
+
+.ad-container--in-article {
+  max-width: 860px;
+  margin-block: clamp(24px, 3.5vw, 40px);
+}
+
+.ad-container--in-article > .adsbygoogle {
+  min-height: 110px;
+}
+
+.ad-container--article-inline > .adsbygoogle {
+  min-height: 120px;
+}
+
+.ad-container.is-loading > .adsbygoogle {
+  opacity: 0.82;
+}
+
+.ad-container.is-empty,
+.ad-container.is-unavailable {
+  min-height: 0;
+  margin-block: 12px;
+}
+
+.ad-container.is-empty > .adsbygoogle,
+.ad-container.is-unavailable > .adsbygoogle {
+  min-height: 0;
+  height: 0;
+  visibility: hidden;
 }
 
 .ad-slot .ad-box {
@@ -963,6 +1026,27 @@ table.compare tbody tr:hover {
   color: var(--ink-soft);
   font-size: 0.78rem;
   background: rgba(15, 76, 129, 0.03);
+}
+
+@media (max-width: 640px) {
+  .ad-container {
+    padding-inline: 14px;
+    --ad-space: 24px;
+  }
+
+  .ad-container--after-intro {
+    margin-top: 12px;
+  }
+
+  .ad-container--article-inline > .adsbygoogle {
+    min-height: 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-container > .adsbygoogle {
+    transition: none;
+  }
 }
 
 /* ============ Sources ============ */
