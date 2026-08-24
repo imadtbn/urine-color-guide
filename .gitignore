@@ -1,0 +1,5 @@
+source/node_modules/
+source/dist/
+source/.manus-logs/
+source/.git/
+source/client/public/__manus__/

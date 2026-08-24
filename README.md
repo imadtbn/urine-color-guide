@@ -1,85 +1,29 @@
-# دليل ألوان البول (Urine Color Guide)
+# Urine Color Guide
 
-موقع تثقيفي طبي عربي، مبني بالكامل بـ **HTML5 + CSS3 + Vanilla JavaScript** بدون أي إطار عمل.
+This repository contains the published static build of **Urine Color Guide**, an educational, bilingual reference for observing common urine-color changes in their wider health context. The content is designed to clarify patterns and safety signals; it is **not** a substitute for individual medical advice, diagnosis, or treatment.
 
-## هيكل المشروع
+The site is published through GitHub Pages from the repository root. The full React/Vite source is retained under [`source/`](./source/) so that the published output and development implementation remain traceable.
 
-```
-urine-guide/
-├── index.html              الصفحة الرئيسية (Hero، جدول الألوان، المقارنة، الحاسبة، الأسئلة، التحذيرات، المصادر)
-├── about.html               عن الموقع
-├── contact.html             اتصل بنا
-├── articles.html            المقالات الطبية
-├── privacy.html             سياسة الخصوصية
-├── cookies.html             سياسة ملفات الارتباط
-├── disclaimer.html          إخلاء المسؤولية الطبية
-├── sitemap.html              خريطة الموقع (نسخة HTML)
-├── robots.txt
-├── sitemap.xml
-├── sitemap-images.xml
-├── manifest.webmanifest
-├── service-worker.js
-├── favicon.ico
-├── assets/
-│   ├── css/style.css        تصميم عام + متغيرات الألوان/الخطوط + الوضع الليلي
-│   ├── css/responsive.css   تجاوب كامل (Desktop → Mobile)
-│   ├── js/data.js           قاعدة بيانات الألوان الـ16 (بيانات فقط، بدون HTML)
-│   ├── js/faq-data.js       بيانات الأسئلة الشائعة
-│   ├── js/app.js            كل التفاعل: بطاقات، فلاتر، نافذة التفاصيل، الحاسبة، الأكورديون...
-│   ├── icons/                أيقونات PWA (192/512)
-│   ├── images/                (فارغ — انظر ملاحظة الصور أدناه)
-│   └── fonts/                 (يُستخدم Google Fonts عبر CDN حالياً)
-└── data/                      (محجوز لأي بيانات JSON مستقبلية)
-```
+## What changed
 
-## قرار تصميمي مهم بخصوص صفحات الألوان
+The current release introduces an English-first experience with an Arabic RTL language switch, distinct editorial images for each kidney and urinary-health article, contextual related-reading cards, responsive layouts, structured data, multilingual alternate links, `robots.txt`, and an expanded XML sitemap. The visual system is based on a calm laboratory aesthetic: warm paper, clinical navy, aqueous mint, and a flowing color-spectrum thread that links observations with safety context.
 
-الطلب الأصلي يقترح صفحة HTML منفصلة لكل لون من الألوان الـ16. تم اعتماد نمط مختلف وأكثر
-قابلية للصيانة: **كل الألوان مُخزَّنة كبيانات في `data.js`، وتُعرض في نافذة تفاصيل (Dialog)
-تُفتح من نفس الصفحة** وتحتوي كل الحقول المطلوبة (الوصف، الأسباب، الأدوية، الأطعمة، الحالات
-المرضية، الإجراءات المنزلية، متى تجب مراجعة الطوارئ، المصادر). كل لون له رابط مباشر خاص به
-(`index.html#red`، `index.html#brown`...) يفتح تفاصيله تلقائياً عند التحميل.
+## Local development
 
-**لماذا هذا القرار؟**
-- تفادي تكرار نفس القالب في 16 ملف HTML منفصل يصعب صيانتها لاحقاً.
-- تحديث معلومة طبية واحدة (مثلاً مصدر أو جرعة) يتم في مكان واحد فقط.
-- تجربة مستخدم أسرع (بدون إعادة تحميل الصفحة).
-
-إن كان مطلوباً لاحقاً 16 صفحة HTML مستقلة فعلياً لأسباب SEO بحتة (URL منفصل لكل صفحة تُفهرس
-باسمها الكامل)، يمكن توليدها آلياً من نفس ملف `data.js` بسكربت بناء بسيط (Node.js) يُنتج ملف
-`colors/{id}.html` لكل عنصر — هذا التوسعة المستقبلية المذكورة في المتطلبات ("قابل للتوسعة").
-
-## ملاحظة حول الصور
-
-الطلب يستلزم صوراً حقيقية عالية الجودة لكل لون بول داخل وعاء شفاف. **لا يمكن توليد أو جلب
-صور طبية حقيقية بهذه الطريقة تلقائياً**؛ بدلاً من ذلك تم استخدام تمثيل بصري (SVG/CSS) بنفس
-القيمة اللونية الدقيقة (Hex) المطابقة لكل حالة، مع ترك `assets/images/` جاهزاً لرفع صور
-حقيقية لاحقاً. عند رفع الصور، أضف أيضاً وسم `<image:image>` لكل صورة في `sitemap-images.xml`
-واستبدل عنصر `vial-mini` في `app.js` بعنصر `<img>` مع `loading="lazy"` و`alt` وصفي.
-
-## المحتوى الطبي والمصادر
-
-كل بطاقة لون تذكر مصادرها الطبية (Mayo Clinic، Cleveland Clinic، NHS، MedlinePlus،
-Merck Manual، National Kidney Foundation...). المحتوى تثقيفي مبسّط وليس نصاً منقولاً حرفياً
-من أي مصدر، ولا يُغني عن استشارة طبيب مختص — هذا موضّح صراحة في الصفحة الرئيسية وصفحة
-"إخلاء المسؤولية الطبية".
-
-## قبل النشر (Checklist)
-
-- [ ] استبدل `https://urine-color-guide.example.com` بنطاقك الفعلي في جميع الملفات (`index.html`،
-      `sitemap.xml`، `robots.txt`، الصفحات الفرعية).
-- [ ] استبدل رقم الهاتف والبريد الإلكتروني الوهميين في الفوتر وصفحة الاتصال.
-- [ ] ارفع صوراً طبية حقيقية مرخصة إلى `assets/images/` واربطها بكل لون.
-- [ ] استبدل أيقونات `assets/icons/` بشعار احترافي فعلي (192×512 بكسل).
-- [ ] فعّل شبكة إعلانات (مثل Google AdSense) داخل عناصر `.ad-box` الموجودة في `index.html`.
-- [ ] راجع كل معلومة طبية مع مختص (طبيب كلى/مسالك بولية) قبل النشر الفعلي.
-
-## تشغيل محلي
-
-الموقع ثابت بالكامل (Static)، يكفي فتح `index.html` مباشرة في المتصفح، أو تشغيل خادم محلي بسيط:
+Use the source folder to run the development site.
 
 ```bash
-python3 -m http.server 8080
+cd source
+pnpm install
+pnpm dev
 ```
 
-ثم زيارة `http://localhost:8080`.
+To create the GitHub Pages build, run the following command from `source/`. The build must use the repository base path so asset and route URLs resolve correctly under `https://imadtbn.github.io/urine-color-guide/`.
+
+```bash
+GITHUB_PAGES=true pnpm build
+```
+
+## Editorial sources
+
+The website links to reputable public health sources, including [Mayo Clinic](https://www.mayoclinic.org/diseases-conditions/urine-color/symptoms-causes/syc-20367333), [MedlinePlus](https://medlineplus.gov/lab-tests/blood-in-urine/), the [National Kidney Foundation](https://www.kidney.org/), and the relevant hydration research indexed in [PubMed](https://pubmed.ncbi.nlm.nih.gov/16552947/).
