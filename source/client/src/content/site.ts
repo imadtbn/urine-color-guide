@@ -8,6 +8,8 @@ export type Localized = Record<Language, string>;
 
 export const text = (value: Localized, language: Language) => value[language];
 
+const assetBase = `${import.meta.env.BASE_URL}assets/images`;
+
 export type Article = {
   slug: string;
   image: string;
@@ -24,7 +26,7 @@ export type Article = {
 export const articles: Article[] = [
   {
     slug: "kidney-stones-urine-color",
-    image: "/manus-storage/kidney-stones-cover_053b2109.jpg",
+    image: `${assetBase}/kidney-stones-cover.webp`,
     category: { en: "Kidney & urinary health", ar: "صحة الكلى والمسالك" },
     title: { en: "Kidney stones: when pain and urine color deserve attention", ar: "حصى الكلى: متى يستدعي الألم ولون البول الانتباه؟" },
     excerpt: { en: "A practical overview of kidney-stone symptoms, urine color changes, and the signs that should prompt timely care.", ar: "نظرة عملية على أعراض حصى الكلى وتغير لون البول والعلامات التي تستدعي رعاية في الوقت المناسب." },
@@ -43,7 +45,7 @@ export const articles: Article[] = [
   },
   {
     slug: "blood-in-urine-hematuria",
-    image: "/manus-storage/hematuria-cover_3b9d04ca.jpg",
+    image: `${assetBase}/hematuria-cover.webp`,
     category: { en: "Important urine signals", ar: "علامات البول المهمة" },
     title: { en: "Blood in urine: changes that should not be ignored", ar: "الدم في البول: تغيّرات لا ينبغي تجاهلها" },
     excerpt: { en: "What pink, red, or brown urine can mean, why it needs context, and which accompanying symptoms matter most.", ar: "ما الذي قد يعنيه البول الوردي أو الأحمر أو البني، ولماذا يحتاج إلى سياق، وما الأعراض المصاحبة الأكثر أهمية." },
@@ -62,7 +64,7 @@ export const articles: Article[] = [
   },
   {
     slug: "chronic-kidney-disease-urine-signs",
-    image: "/manus-storage/ckd-cover_d7fa772a.jpg",
+    image: `${assetBase}/ckd-cover.webp`,
     category: { en: "Kidney health", ar: "صحة الكلى" },
     title: { en: "Chronic kidney disease: why signs can be subtle", ar: "مرض الكلى المزمن: لماذا قد تكون العلامات خفية؟" },
     excerpt: { en: "An educational introduction to urinary changes, risk factors, and the tests clinicians use to assess kidney health.", ar: "مقدمة تثقيفية للتغيرات البولية وعوامل الخطورة والفحوص التي يستخدمها الأطباء لتقييم صحة الكلى." },
@@ -81,7 +83,7 @@ export const articles: Article[] = [
   },
   {
     slug: "foamy-urine-proteinuria",
-    image: "/manus-storage/foamy-urine-cover_b6057c45.jpg",
+    image: `${assetBase}/foamy-urine-cover.webp`,
     category: { en: "Urine testing", ar: "تحليل البول" },
     title: { en: "Foamy urine and protein: when to ask about testing", ar: "البول الرغوي والبروتين: متى تسأل عن الفحص؟" },
     excerpt: { en: "A clear distinction between temporary bubbles and persistent foamy urine, plus the role of a urine test.", ar: "تمييز واضح بين الفقاعات العابرة والبول الرغوي المستمر، مع دور تحليل البول." },
@@ -100,7 +102,7 @@ export const articles: Article[] = [
   },
   {
     slug: "kidney-infection-pyelonephritis",
-    image: "/manus-storage/kidney-infection-cover_2474555e.jpg",
+    image: `${assetBase}/kidney-infection-cover.webp`,
     category: { en: "Urinary infections", ar: "التهابات المسالك" },
     title: { en: "Kidney infection: how it differs from bladder symptoms", ar: "التهاب الكلى: كيف يختلف عن أعراض المثانة؟" },
     excerpt: { en: "An educational guide to symptoms that can suggest a urinary infection needs prompt professional care.", ar: "دليل تثقيفي للأعراض التي قد تشير إلى أن عدوى المسالك تحتاج إلى رعاية مهنية سريعة." },
@@ -119,7 +121,7 @@ export const articles: Article[] = [
   },
   {
     slug: "iga-nephropathy-urine",
-    image: "/manus-storage/iga-nephropathy-cover_79776977.jpg",
+    image: `${assetBase}/iga-nephropathy-cover.webp`,
     category: { en: "Glomerular conditions", ar: "أمراض الكبيبات" },
     title: { en: "IgA nephropathy: pink urine and foam in context", ar: "اعتلال الكلية بـ IgA: البول الوردي والرغوة في سياقها" },
     excerpt: { en: "A measured introduction to a glomerular kidney condition, and why urine appearance requires testing and clinical context.", ar: "مقدمة متزنة لحالة تصيب كبيبات الكلى، ولماذا يحتاج مظهر البول إلى فحص وسياق سريري." },
@@ -138,7 +140,7 @@ export const articles: Article[] = [
   },
   {
     slug: "uti-symptoms-urine-color",
-    image: "/manus-storage/uti-cover_bfbe8df9.jpg",
+    image: `${assetBase}/uti-cover.webp`,
     category: { en: "Urinary health", ar: "صحة المسالك البولية" },
     title: { en: "UTI symptoms and urine color: what belongs together", ar: "أعراض التهاب المسالك ولون البول: ما الذي ينبغي النظر إليه معاً؟" },
     excerpt: { en: "How urinary symptoms, odor, cloudiness, and color can fit into a bigger picture—without relying on one visual sign.", ar: "كيف يمكن أن تتكامل الأعراض البولية والرائحة والعكارة واللون في صورة أكبر دون الاعتماد على علامة بصرية واحدة." },

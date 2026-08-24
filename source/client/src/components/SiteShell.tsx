@@ -7,6 +7,8 @@ import { ArrowUpRight, Droplets, Globe2, Menu, X } from "lucide-react";
 import { sourceLinks, text } from "@/content/site";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+const brandMark = `${import.meta.env.BASE_URL}assets/images/urine-guide-mark.png`;
+
 const labels = {
   explorer: { en: "Explore", ar: "استكشف" },
   colors: { en: "Color guide", ar: "دليل الألوان" },
@@ -46,7 +48,7 @@ export function SiteHeader() {
     <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
       <div className="shell header-row">
         <Link href="/" className="brand" aria-label="Urine Color Guide home">
-          <img src="/manus-storage/urine-guide-mark_c592786b.png" className="brand-mark" alt="" />
+          <img src={brandMark} className="brand-mark" alt="" />
           <span className="brand-copy"><strong>Urine</strong><em>Color Guide</em><span className="brand-measure" aria-hidden="true"><i /><i /><i /></span></span>
         </Link>
         <nav className={`primary-nav ${open ? "primary-nav--open" : ""}`} aria-label={isAr ? "التنقل الأساسي" : "Primary navigation"}>
@@ -75,7 +77,7 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <section>
-          <div className="footer-brand"><img src="/manus-storage/urine-guide-mark_c592786b.png" alt="" /><span><strong>Urine</strong><em>Color Guide</em></span></div>
+          <div className="footer-brand"><img src={brandMark} alt="" /><span><strong>Urine</strong><em>Color Guide</em></span></div>
           <p>{isAr ? "مرجع بصري هادئ لفهم تغيرات لون البول ضمن سياقها الصحي، دون تشخيص فردي." : "A calm visual reference for understanding urine color changes in their health context—without individual diagnosis."}</p>
           <p className="footer-note">{text(labels.disclaimer, language)}</p>
         </section>

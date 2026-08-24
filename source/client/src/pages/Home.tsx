@@ -11,6 +11,8 @@ import { SpectrumThread } from "@/components/SpectrumThread";
 import { articles, sourceLinks, text, urineColors } from "@/content/site";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+const heroImage = `${import.meta.env.BASE_URL}assets/images/urine-guide-hero.webp`;
+
 const copy = {
   eyebrow: { en: "An evidence-conscious visual reference", ar: "مرجع بصري واعٍ بالأدلة" },
   hero: { en: "Read the signal. Keep the context.", ar: "اقرأ الإشارة. احتفظ بالسياق." },
@@ -62,7 +64,7 @@ export default function Home() {
     <section className="hero-section">
       <div className="shell hero-grid">
         <div className="hero-copy"><p className="eyebrow"><Sparkles size={15} /> {text(copy.eyebrow, language)}</p><h1>{text(copy.hero, language)}</h1><p className="hero-lead">{text(copy.heroText, language)}</p><div className="hero-actions"><a href="#chart" className="solid-button">{text(copy.explore, language)} <ArrowUpRight size={18} /></a><Link href="/articles" className="text-button">{text(copy.articles, language)} <ArrowUpRight size={17} /></Link></div><p className="hero-proof"><ShieldCheck size={16} /> {text(copy.reviewed, language)}</p></div>
-        <div className="hero-image-wrap"><div className="hero-image-tint" /><img src="/manus-storage/urine-guide-hero_b820baf4.jpg" alt="" className="hero-image" /><div className="hero-float-card"><span>{isAr ? "ابدأ بالسياق" : "Start with context"}</span><strong>{isAr ? "اللون لا يقف وحده" : "Color never stands alone"}</strong></div></div>
+        <div className="hero-image-wrap"><div className="hero-image-tint" /><img src={heroImage} alt="" className="hero-image" /><div className="hero-float-card"><span>{isAr ? "ابدأ بالسياق" : "Start with context"}</span><strong>{isAr ? "اللون لا يقف وحده" : "Color never stands alone"}</strong></div></div>
       </div>
       <div className="shell signal-strip"><span>{isAr ? "إشارة بصرية" : "Visual signal"}</span><div className="signal-line">{urineColors.map((color) => <i key={color.tone} style={{ backgroundColor: color.tone }} />)}</div><span>{isAr ? "سياق صحي" : "Health context"}</span></div>
       <SpectrumThread className="spectrum-thread--hero" />
