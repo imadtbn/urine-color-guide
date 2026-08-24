@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { AlertTriangle, ArrowUpRight, ChevronDown, CircleHelp, Droplets, FlaskConical, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "wouter";
+import { AdUnit } from "@/components/AdUnit";
 import { ArticleCard } from "@/components/ArticleCard";
 import { PageFrame } from "@/components/SiteShell";
 import { SpectrumThread } from "@/components/SpectrumThread";
@@ -67,6 +68,7 @@ export default function Home() {
       <SpectrumThread className="spectrum-thread--hero" />
     </section>
 
+    <AdUnit variant="top" />
     <section className="spectrum-section" id="chart"><div className="shell"><div className="section-heading split-heading"><div><p className="eyebrow">{text(copy.spectrum, language)}</p><h2>{text(copy.spectrumTitle, language)}</h2></div><p>{text(copy.spectrumText, language)}</p></div><div className="filter-row" role="group" aria-label={isAr ? "تصفية درجات لون البول" : "Filter urine color shades"}>{filterLabels.map(([value, label]) => <button type="button" key={value} className={filter === value ? "filter-button active" : "filter-button"} onClick={() => setFilter(value)}>{text(label, language)}</button>)}</div><div className="color-track">{filtered.map((color, index) => <article className={`color-card color-card--${color.type}`} key={color.tone}><div className="color-swatch" style={{ backgroundColor: color.tone }}><span>{String(index + 1).padStart(2, "0")}</span></div><div><p className="color-type">{color.type === "typical" ? text(copy.typical, language) : color.type === "watch" ? text(copy.watch, language) : text(copy.care, language)}</p><h3>{text(color.label, language)}</h3><p>{text(color.note, language)}</p><small>{text(color.action, language)}</small></div></article>)}</div></div></section>
 
     <section className="how-section"><SpectrumThread className="spectrum-thread--pale" /><div className="shell how-layout"><div className="how-intro"><p className="eyebrow">{text(copy.howToRead, language)}</p><h2>{text(copy.howTitle, language)}</h2><div className="water-mark"><Droplets size={32} /></div></div><div className="steps-list">{steps.map((step) => { const Icon = step.icon; return <article key={text(step.title, language)} className="step-card"><span className="step-icon"><Icon size={22} /></span><div><h3>{text(step.title, language)}</h3><p>{text(step.body, language)}</p></div></article>; })}</div></div></section>
@@ -77,6 +79,7 @@ export default function Home() {
 
     <section className="sources-section"><div className="shell source-layout"><div><p className="eyebrow">{text(copy.sources, language)}</p><h2>{text(copy.sourcesTitle, language)}</h2><p>{isAr ? "يقترح الدليل ملاحظات وأسئلة آمنة، ويعرض مصادر عامة يمكنك العودة إليها. لا يستخدم مخطط الألوان بدل التقييم الطبي أو الفحص." : "The guide suggests safe observations and useful questions, then points to public sources. A color chart never replaces clinical assessment or testing."}</p></div><div className="source-list">{sourceLinks.map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}><span>{source.name}</span><ArrowUpRight size={17} /></a>)}</div></div></section>
 
-    <section className="faq-section"><div className="shell faq-layout"><div><p className="eyebrow"><CircleHelp size={15} /> {text(copy.faq, language)}</p><h2>{text(copy.faqTitle, language)}</h2></div><div className="faq-list">{faqs.map((faq) => <details key={text(faq.q, language)}><summary>{text(faq.q, language)}<ChevronDown size={20} /></summary><p>{text(faq.a, language)}</p></details>)}</div></div></section>
+    <section className="faq-section"><div className="shell faq-layout"><div><p className="eyebrow"><CircleHelp size={15} /> {text(copy.faq, language)}</p><h2>{text(copy.faqTitle, language)}</h2></div><div className="faq-list">{faqs.map((faq) => <details key={text(faq.q, language)}><summary>{text(faq.q, language)}<ChevronDown size={20} /></summary><p>{text(faq.a, language)}</p></details>)}</div></div>    </section>
+    <AdUnit variant="bottom" />
   </PageFrame>;
 }

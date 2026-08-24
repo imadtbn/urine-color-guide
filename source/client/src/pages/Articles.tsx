@@ -1,5 +1,6 @@
 /** Design system reminder — Calm Laboratory article index is a spacious editorial shelf, not a uniform card wall. */
 import { useEffect } from "react";
+import { AdUnit } from "@/components/AdUnit";
 import { ArticleCard } from "@/components/ArticleCard";
 import { PageFrame } from "@/components/SiteShell";
 import { SpectrumThread } from "@/components/SpectrumThread";
@@ -19,11 +20,13 @@ export default function Articles() {
       </div>
       <SpectrumThread className="spectrum-thread--index" />
     </section>
+    <AdUnit variant="top" />
     <section className="shell article-index-layout" aria-label={isAr ? "المقالات" : "Articles"}>
       <div className="editorial-note"><span>{isAr ? "نقطة بداية" : "Start here"}</span><p>{isAr ? "لا تصف الصور أو المقالات حالة فردية. استخدمها لتحديد الأسئلة المهمة ثم اطلب المشورة المهنية عند الحاجة." : "Images and articles do not diagnose an individual condition. Use them to identify the important questions, then seek professional advice when needed."}</p><strong>{isAr ? "قراءة تثقيفية" : "Educational reading"}</strong></div>
       <div className="article-shelf">
         {articles.map((article, index) => <ArticleCard article={article} key={article.slug} featured={index === 0} />)}
       </div>
     </section>
+    <AdUnit variant="bottom" />
   </PageFrame>;
 }

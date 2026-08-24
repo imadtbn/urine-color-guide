@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { AlertTriangle, ArrowLeft, BookOpenCheck, CheckCircle2, Clock3 } from "lucide-react";
 import { Link, useRoute } from "wouter";
+import { AdUnit } from "@/components/AdUnit";
 import { ArticleCard } from "@/components/ArticleCard";
 import { PageFrame } from "@/components/SiteShell";
 import { articles, text } from "@/content/site";
@@ -30,6 +31,7 @@ export default function ArticleDetail() {
         </div>
       </div>
       <div className="shell article-feature-image"><img src={article.image} alt="" /></div>
+      <AdUnit variant="inline" />
       <div className="shell article-content-layout">
         <div className="article-copy">
           {article.body.map((paragraph, index) => <p key={index}>{text(paragraph, language)}</p>)}
@@ -50,6 +52,7 @@ export default function ArticleDetail() {
         </aside>
       </div>
     </article>
+    <AdUnit variant="bottom" />
     <section className="related-section"><div className="shell"><p className="eyebrow">{isAr ? "قراءة ذات صلة" : "Related reading"}</p><h2>{isAr ? "تابع من الإشارة إلى السياق." : "Move from a signal to its context."}</h2><div className="related-grid">{related.map((item) => <ArticleCard key={item.slug} article={item} />)}</div></div></section>
   </PageFrame>;
 }
