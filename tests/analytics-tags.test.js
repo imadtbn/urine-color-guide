@@ -16,12 +16,11 @@ for (const relativeFile of htmlFiles) {
   });
 }
 
-test("central loader keeps known IDs and documented placeholders", () => {
+test("central loader keeps known IDs and documented placeholder", () => {
   const loader = fs.readFileSync(path.join(root, "assets/js/site-tags.js"), "utf8");
   assert.match(loader, /G-GDKZ91CQQ9/);
   assert.match(loader, /ca-pub-5656416032906373/);
-  assert.match(loader, /gtmId: "xxxxxxxx"/);
+  assert.match(loader, /gtmId: "GTM-P6ZPW7KL"/);
   assert.match(loader, /clarityId: "xxxxxxxx"/);
-  assert.match(loader, /ضع هنا معرف Google Tag Manager/);
   assert.match(loader, /ضع هنا معرف Microsoft Clarity/);
 });

@@ -4,7 +4,7 @@
   var config = {
     ga4Id: "G-GDKZ91CQQ9",
     adsenseClient: "ca-pub-5656416032906373",
-    gtmId: "xxxxxxxx", // ضع هنا معرف Google Tag Manager (مثال: GTM-XXXXXXX)
+    gtmId: "GTM-P6ZPW7KL",
     clarityId: "xxxxxxxx", // ضع هنا معرف Microsoft Clarity
     adsenseSlots: {
       top: "7867079394",
