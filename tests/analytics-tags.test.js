@@ -13,6 +13,7 @@ for (const relativeFile of htmlFiles) {
     const html = fs.readFileSync(path.join(root, relativeFile), "utf8");
     assert.equal((html.match(loaderPattern) || []).length, 1);
     assert.equal((html.match(directLoaderPattern) || []).length, 0);
+    assert.equal((html.match(/googletagmanager\.com\/ns\.html\?id=GTM-P6ZPW7KL/g) || []).length, 1);
   });
 }
 
