@@ -1,6 +1,7 @@
 (function () {
   "use strict";
 
+  
   var config = {
     ga4Id: "G-GDKZ91CQQ9",
     adsenseClient: "ca-pub-5656416032906373",
