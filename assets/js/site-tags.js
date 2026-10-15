@@ -133,4 +133,9 @@
   setupClarity();
   setupAdSenseObserver();
   setupRouteTracking();
+  // Load the lightweight navigation enhancement on the published Vite bundle.
+  // The original analytics/AdSense loading behavior remains unchanged.
+  if (document.currentScript && document.currentScript.src) {
+    loadScript("nav-icons", new URL("./nav-icons.js", document.currentScript.src).href);
+  }
 })();
