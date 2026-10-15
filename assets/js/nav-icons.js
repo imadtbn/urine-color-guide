@@ -56,7 +56,7 @@
     }
     if (section === "header" && url.hash === "#chart") return "palette";
     if (section === "header" && url.hash === "#seek-care") return "heart";
-    var pathname = url.pathname.replace(/\\/+$/, "");
+    var pathname = url.pathname.replace(new RegExp("/+$"), "");
     if (pathname.endsWith("/articles")) return "book";
     if (pathname.endsWith("/about")) return "info";
     if (pathname.endsWith("/privacy")) return "shield";
