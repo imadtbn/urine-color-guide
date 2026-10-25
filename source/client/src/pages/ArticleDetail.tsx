@@ -31,7 +31,7 @@ export default function ArticleDetail() {
         </div>
       </div>
       <div className="shell article-feature-image"><img src={article.image} alt="" /></div>
-      <AdUnit variant="inline" />
+      <AdUnit variant="top" />
       <div className="shell article-content-layout">
         <div className="article-copy">
           {article.body.map((paragraph, index) => <p key={index}>{text(paragraph, language)}</p>)}
