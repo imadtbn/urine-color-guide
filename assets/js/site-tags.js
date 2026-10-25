@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  
   var config = {
     ga4Id: "G-GDKZ91CQQ9",
     adsenseClient: "ca-pub-5656416032906373",
@@ -133,9 +132,4 @@
   setupClarity();
   setupAdSenseObserver();
   setupRouteTracking();
-  // Load the lightweight navigation enhancement on the published Vite bundle.
-  // The original analytics/AdSense loading behavior remains unchanged.
-  if (document.currentScript && document.currentScript.src) {
-    loadScript("nav-icons", new URL("./nav-icons.js", document.currentScript.src).href);
-  }
 })();
