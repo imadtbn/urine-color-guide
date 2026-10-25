@@ -204,7 +204,7 @@ function vitePluginStorageProxy(): Plugin {
 }
 
 const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
-const githubPagesBase = process.env.GITHUB_PAGES === "true" ? "/urine-color-guide/" : "/";
+const githubPagesBase = process.env.GITHUB_PAGES === "false" ? "/" : "/urine-color-guide/";
 
 export default defineConfig({
   base: githubPagesBase,
